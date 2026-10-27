@@ -3,32 +3,52 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>アプリの雛形</title>
-<meta name="description" content="ビルドなしで動くアプリの雛形">
-<meta name="theme-color" content="#151a2e">
+<title>あみだくじ</title>
+<meta name="description" content="名前と結果を入れて、線をたどるあみだくじ">
+<meta name="theme-color" content="#18223B">
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+<main>
 
-<div id="app">
-  <header id="topbar">
-    <h1 class="title">アプリの雛形</h1>
-    <div class="topbar-actions">
-      <button type="button" id="btnAction" class="btn btn-primary">ためす</button>
-    </div>
-  </header>
+<section id="setup">
+  <h1>あみだくじ</h1>
+  <div class="count">
+    <span>にんずう</span>
+    <button type="button" id="minus" aria-label="へらす">−</button>
+    <output id="cnt">6</output>
+    <button type="button" id="plus" aria-label="ふやす">＋</button>
+  </div>
+  <div class="presets" role="group" aria-label="けっかのパターン">
+    <button type="button" data-p="one">あたり1つ</button>
+    <button type="button" data-p="order">じゅんばん</button>
+    <button type="button" data-p="blank">からっぽ</button>
+  </div>
+  <div id="rows"></div>
+  <button type="button" id="go" class="primary">はじめる</button>
+</section>
 
-  <main id="stage">
-    <p class="lead">ここにアプリを作る。</p>
-    <p class="result" id="result">—</p>
-    <p class="note">
-      ロジックは <code>src/core.js</code> に、画面は <code>src/app.js</code> に書く。<br>
-      <code>npm test</code> でロジックを、<code>npm run test:ui</code> で画面を確かめる。
-    </p>
-  </main>
-</div>
+<section id="play" hidden>
+  <div class="top">
+    <button type="button" id="back" class="ghost">せっていにもどる</button>
+    <button type="button" id="snd" class="ghost"></button>
+  </div>
+  <div id="wrap">
+    <div class="cols" id="names"></div>
+    <canvas id="cv"></canvas>
+    <div class="cols" id="slots"></div>
+  </div>
+  <p id="hint">名前をタップすると、線をたどります</p>
+  <div class="bar">
+    <button type="button" id="all">ぜんぶたどる</button>
+    <button type="button" id="rung"></button>
+    <button type="button" id="again">つくりなおす</button>
+  </div>
+  <ul id="sum"></ul>
+</section>
 
+</main>
 <script src="./core.js"></script>
 <script src="./app.js"></script>
 </body>
